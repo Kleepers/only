@@ -1,3 +1,11 @@
 .swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
     visibility: hidden;
 }
+
+.swiper-button-next:after {
+    margin-right: 40px;
+}
+
+.swiper-button-prev:after {
+    margin-left: 40px
+}

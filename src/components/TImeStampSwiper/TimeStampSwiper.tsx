@@ -18,7 +18,7 @@ export const TimeStampSwiper = ({datesDescription}: TTimeStampSwiperProps) => {
             spaceBetween={80}
             slidesPerView={3}
             style={{
-                margin: '0 80px 0',
+                margin: '0',
                 padding: '0 80px'
         }}
             modules={[Navigation]}
