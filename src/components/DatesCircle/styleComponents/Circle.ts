@@ -8,10 +8,7 @@ export const Circle = styled.div<{ $Length: number; }>`
   border: 1px solid rgba(66, 86, 122, 0.2);
   margin-left: auto;
   margin-right: auto;
-  top: 217px;
+  top: 260px;
   left: 452px;
-
-  ${props => css`
-      rotate: -120deg;
-  `}
+  
 `

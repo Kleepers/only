@@ -8,5 +8,6 @@ export const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  padding-top: 170px;
+  padding-top: 14vh;
+  padding-bottom: 10vh;
 `

@@ -7,17 +7,16 @@ import {DatesCircle} from "./components/DatesCircle/DatesCircle";
 
 import {dates} from "./data";
 import {getActiveDateIndex} from "./utils/getActiveDateIndex";
-import {Wrapper} from "./components/DatesBlockWrapper/styleComponents/Wrapper";
 import {DatesBlockWrapper} from "./components/DatesBlockWrapper/DatesBlockWrapper";
 
 function App() {
-    const [activeDate, setActiveDate] = useState(`${dates[0].text}`);
-    const activeDateIndex = getActiveDateIndex(dates, activeDate);
+    const [activeDateText, setActiveDateText] = useState(`${dates[0].text}`);
+    const activeDateIndex = getActiveDateIndex(dates, activeDateText);
 
     return (
     <div className="App">
-        <DatesBlockWrapper date={dates[activeDateIndex]}>
-            <DatesCircle dates={dates} activeDate={activeDate} setActiveDate={setActiveDate}/>
+        <DatesBlockWrapper dates={dates} activeDateIndex={activeDateIndex} setActiveDateText={setActiveDateText}>
+            <DatesCircle dates={dates} activeDateText={activeDateText} setActiveDate={setActiveDateText}/>
             <HistoricalDates datesDescription={dates[activeDateIndex].dates}/>
         </DatesBlockWrapper>
     </div>

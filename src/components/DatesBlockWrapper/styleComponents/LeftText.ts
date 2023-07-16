@@ -8,6 +8,6 @@ export const LeftText = styled.span`
   line-height: 160px;
   letter-spacing: -0.02em;
   text-align: center;
-  color: rgba(239, 93, 168, 1);
-  margin-right: 170px;
+  color: rgba(93, 95, 239, 1);
+  margin-right: 100px;
 `

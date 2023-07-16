@@ -18,7 +18,6 @@ export const BlockTitle = styled.h1`
   color: rgba(66, 86, 122, 1);
   margin: 0;
   max-width: 400px;
-  position: absolute;
 ;
 
 

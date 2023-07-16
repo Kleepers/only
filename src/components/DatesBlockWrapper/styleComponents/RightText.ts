@@ -9,6 +9,6 @@ export const RightText = styled.span`
   line-height: 160px;
   letter-spacing: -0.02em;
   text-align: center;
-  color: rgba(93, 95, 239, 1)
+  color: rgba(239, 93, 168, 1);
 
 `

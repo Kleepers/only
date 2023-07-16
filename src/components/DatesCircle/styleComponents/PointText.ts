@@ -11,5 +11,6 @@ export const PointText = styled.p`
   text-align: left;
   margin-top: -45px;
   margin-left: 70px;
+  color: #42567A;
 
 `

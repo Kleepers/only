@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 
 
-export const ControlButton = styled.button`
+export const ControlButton = styled.button<{ $IsDisabled: boolean}>`
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -11,4 +11,8 @@ export const ControlButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${props => props.$IsDisabled && css`
+    opacity: 50%;
+  `}
 `

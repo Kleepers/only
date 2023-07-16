@@ -10,19 +10,19 @@ import {PointText} from "./styleComponents/PointText";
 
 type TDatesCircleProps = {
     dates: Array<TPoint>;
-    activeDate: string;
+    activeDateText: string;
     setActiveDate: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const DatesCircle = ({dates, activeDate, setActiveDate}: TDatesCircleProps) => {
+export const DatesCircle = ({dates, activeDateText, setActiveDate}: TDatesCircleProps) => {
 
     const points = getPointsTextArray(dates);
-    const activeDateIndex = getActiveDateIndex(dates, activeDate);
+    const activeDateIndex = getActiveDateIndex(dates, activeDateText);
 
     useEffect(() => {
         gsap.to('.circle', { duration: 2, rotation: `${-360/dates.length * (activeDateIndex) - 120}deg)`})
         gsap.to('.point', { duration: 0, rotation: `${360/dates.length * (activeDateIndex) + 120}deg`})
-    }, [activeDate])
+    }, [activeDateText])
 
 
     return (
@@ -34,10 +34,10 @@ export const DatesCircle = ({dates, activeDate, setActiveDate}: TDatesCircleProp
                         $CoordinateX={point.coordinateX}
                         $CoordinateY={point.coordinateY}
                         $Text={point.text}
-                        $IsActive={point.text === activeDate}
+                        $IsActive={point.text === activeDateText}
                         key={index}
                         onClick={() => setActiveDate(point.text)}>
-                        {point.text === activeDate
+                        {point.text === activeDateText
                             ?
                             <>
                                 <PointNumber>{index+1}</PointNumber>

@@ -5,19 +5,47 @@ import RightArrow from '../../assets/RightArrow.svg'
 import {CircleControllerWrapper} from "./styleComponents/CircleControllerWrapper";
 import {Counter} from "./styleComponents/Counter";
 import {ControlButtonWrapper} from "./styleComponents/ControlButtonWrapper";
+import {TPoint} from "../../data";
 
-export const CircleController = () => {
+type TCircleControllerProps = {
+    setActiveDateText: React.Dispatch<React.SetStateAction<string>>;
+    activeDataIndex: number;
+    dates: Array<TPoint>
+}
+
+export const CircleController = ({setActiveDateText, activeDataIndex, dates}: TCircleControllerProps) => {
+
+    const decrementActiveDataIndex = () => {
+        setActiveDateText(dates[activeDataIndex - 1].text)
+    }
+    const incrementActiveDataIndex = () => {
+        setActiveDateText(dates[activeDataIndex + 1].text)
+    }
+
+    const isLeftButtonDisabled = activeDataIndex === 0
+    const isRightButtonDisabled = activeDataIndex === dates.length - 1;
     return (
         <CircleControllerWrapper>
             <Counter>
-                06/06
+                0{activeDataIndex+1}/0{dates.length}
             </Counter>
             <ControlButtonWrapper>
-                <ControlButton>
-                    <img src={LeftArrow}></img>
+                <ControlButton
+                    disabled={isLeftButtonDisabled}
+                    $IsDisabled={isLeftButtonDisabled}
+                    onClick={decrementActiveDataIndex}>
+
+                    <img src={LeftArrow} alt='leftArrow'></img>
+
                 </ControlButton>
-                <ControlButton style={{marginLeft: '20px'}}>
-                    <img src={RightArrow}></img>
+                <ControlButton
+                    disabled={isRightButtonDisabled}
+                    $IsDisabled={isRightButtonDisabled}
+                    style={{marginLeft: '20px'}}
+                    onClick={incrementActiveDataIndex}>
+
+                    <img src={RightArrow} alt='rightArrow'></img>
+
                 </ControlButton>
             </ControlButtonWrapper>
         </CircleControllerWrapper>
