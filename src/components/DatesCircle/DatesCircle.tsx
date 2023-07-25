@@ -20,20 +20,20 @@ export const DatesCircle = ({dates, activeDateText, setActiveDate}: TDatesCircle
     const points = getPointsTextArray(dates);
     const activeDateIndex = getActiveDateIndex(dates, activeDateText);
 
-    const circleClass = getUniqueString();
-    const pointClass = getUniqueString();
+    const circleId = getUniqueString();
+    const pointId = getUniqueString();
 
     useLayoutEffect(() => {
-        gsap.to(`#${circleClass}`, { duration: 2, rotation: `${-360/dates.length * (activeDateIndex) - 150}deg)`})
-        gsap.to(`#${pointClass}`, { duration: 2, rotation: `${360/dates.length * (activeDateIndex) + 150}deg`})
+        gsap.to(`#${circleId}`, { duration: 2, rotation: `${-360/dates.length * (activeDateIndex) - 150}deg)`})
+        gsap.to(`#${pointId}`, { duration: 2, rotation: `${360/dates.length * (activeDateIndex) + 150}deg`})
     }, [activeDateText])
 
     return (
-        <Circle id={circleClass} $Length={dates.length}>
+        <Circle id={circleId} $Length={dates.length}>
             {
                 points.map((point, index) =>
                     <Point
-                        id={pointClass}
+                        id={pointId}
                         $CoordinateX={point.coordinateX}
                         $CoordinateY={point.coordinateY}
                         $Text={point.text}
