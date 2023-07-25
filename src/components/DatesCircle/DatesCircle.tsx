@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useLayoutEffect} from 'react';
 import {TPoint} from "../../data";
 import {Point} from "./styleComponents/Point";
 import {getPointsTextArray} from "../../utils/getPointsTextArray";
@@ -23,18 +23,16 @@ export const DatesCircle = ({dates, activeDateText, setActiveDate}: TDatesCircle
     const circleClass = getUniqueString();
     const pointClass = getUniqueString();
 
-    useEffect(() => {
-        gsap.to(`#${circleClass}`, { duration: 2, rotation: `${-360/dates.length * (activeDateIndex) - 120}deg)`})
-        gsap.to(`#${pointClass}`, { duration: 0, rotation: `${360/dates.length * (activeDateIndex) + 120}deg`})
+    useLayoutEffect(() => {
+        gsap.to(`#${circleClass}`, { duration: 2, rotation: `${-360/dates.length * (activeDateIndex) - 150}deg)`})
+        gsap.to(`#${pointClass}`, { duration: 2, rotation: `${360/dates.length * (activeDateIndex) + 150}deg`})
     }, [activeDateText])
 
-
     return (
-        <Circle className='circle' id={circleClass} $Length={dates.length}>
+        <Circle id={circleClass} $Length={dates.length}>
             {
                 points.map((point, index) =>
                     <Point
-                        className='point'
                         id={pointClass}
                         $CoordinateX={point.coordinateX}
                         $CoordinateY={point.coordinateY}
@@ -42,14 +40,8 @@ export const DatesCircle = ({dates, activeDateText, setActiveDate}: TDatesCircle
                         $IsActive={point.text === activeDateText}
                         key={index}
                         onClick={() => setActiveDate(point.text)}>
-                        {point.text === activeDateText
-                            ?
-                            <>
-                                <PointNumber>{index+1}</PointNumber>
-                                <PointText>{point.text}</PointText>
-                            </>
-                            :
-                            ''}
+                        <PointNumber>{index+1}</PointNumber>
+                        <PointText>{point.text}</PointText>
                     </Point>
                 )
             }
